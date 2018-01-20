@@ -1,9 +1,47 @@
+// Bulma
+@import "~bulma/bulma.sass";
 
-// Fonts
-@import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
+body,
+html {
+    background-color: #4E3759;
+    margin: 0;
+    padding: 0;
+}
 
-// Variables
-@import "variables";
+a {
+    outline: none;
+}
 
-// Bootstrap
-@import "~bootstrap-sass/assets/stylesheets/bootstrap";
+#app {
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.task-list .title {
+    margin: 1rem 0;
+}
+
+.task-list .card {
+    margin: 20px 0;
+}
+
+.check {
+    color: #ff3860;
+}
+
+.done {
+    color: #22c65b;
+}
+
+.check:hover {
+    color: #ff3860;
+}
+
+.check:active,
+.done:active {
+    border: none;
+}
+
+.done:hover {
+    color: #22c65b;
+}

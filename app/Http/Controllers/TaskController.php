@@ -14,9 +14,16 @@ class TaskController extends Controller
      */
     public function index()
     {
-        //
+        return Task::where('archive', 0)
+        ->orderBy('id', 'desc')->get();
     }
 
+    public function archived()
+    {
+        return Task::where('archive', 1)
+                       ->orderBy('id', 'desc')->get();
+    }
+    
     /**
      * Show the form for creating a new resource.
      *
@@ -35,7 +42,11 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'description' => 'required|max:500'
+        ]);
+
+        return Task::create(['description' => request('description')]);
     }
 
     /**
@@ -55,9 +66,22 @@ class TaskController extends Controller
      * @param  \App\Task  $task
      * @return \Illuminate\Http\Response
      */
-    public function edit(Task $task)
+    public function edit(Request $request)
     {
-        //
+        $this->validate($request, [
+            'description' => 'required|max:30'
+        ]);
+
+        $task = Task::findOrFail($request->id);
+        $task->description = $request->description;
+        $task->save();
+    }
+    
+    public function archive($id)
+    {
+        $task = Task::findOrFail($id);
+        $task->archive = ! $task->archive;
+        $task->save();
     }
 
     /**
@@ -78,8 +102,9 @@ class TaskController extends Controller
      * @param  \App\Task  $task
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Task $task)
+    public function destroy($id)
     {
-        //
+        $task = Task::findOrFail($id);
+        $task->delete();
     }
 }
