@@ -13212,7 +13212,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             list: [],
             task: {
                 id: '',
-                body: '',
+                description: '',
                 archive: ''
             },
             editingTask: {},
@@ -13253,7 +13253,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var _this2 = this;
 
             axios.post('create_task', this.task).then(function (result) {
-                _this2.task.body = '';
+                _this2.task.description = '';
                 _this2.fetchTaskList();
             }).catch(function (err) {
                 console.log(err);
@@ -13264,7 +13264,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         endEditing: function endEditing(task) {
             this.editingTask = {};
-            if (task.body.trim() === '') {
+            if (task.description.trim() === '') {
                 this.deleteTask(task.id);
             } else {
                 axios.post('edit_task', task).then(function (result) {
@@ -13323,19 +13323,19 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.task.body,
-                      expression: "task.body"
+                      value: _vm.task.description,
+                      expression: "task.description"
                     }
                   ],
                   staticClass: "input",
                   attrs: { type: "text", placeholder: "New task" },
-                  domProps: { value: _vm.task.body },
+                  domProps: { value: _vm.task.description },
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
                         return
                       }
-                      _vm.$set(_vm.task, "body", $event.target.value)
+                      _vm.$set(_vm.task, "description", $event.target.value)
                     }
                   }
                 })
@@ -13465,7 +13465,7 @@ var render = function() {
                           [
                             _vm._v(
                               "\n                            " +
-                                _vm._s(task.body) +
+                                _vm._s(task.description) +
                                 "\n                        "
                             )
                           ]
@@ -13479,13 +13479,13 @@ var render = function() {
                             {
                               name: "model",
                               rawName: "v-model",
-                              value: task.body,
-                              expression: "task.body"
+                              value: task.description,
+                              expression: "task.description"
                             }
                           ],
                           staticClass: "input",
                           attrs: { type: "text", placeholder: "New task" },
-                          domProps: { value: task.body },
+                          domProps: { value: task.description },
                           on: {
                             keyup: function($event) {
                               if (
@@ -13503,7 +13503,7 @@ var render = function() {
                               if ($event.target.composing) {
                                 return
                               }
-                              _vm.$set(task, "body", $event.target.value)
+                              _vm.$set(task, "description", $event.target.value)
                             }
                           }
                         })

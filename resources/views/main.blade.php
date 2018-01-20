@@ -19,7 +19,7 @@
     <nav class="navbar">
         <div class="navbar-brand">
             <a class="navbar-item" href="{{ url('/test') }}">
-                <img src="images/logo.png" alt="ToDo application" width="112" height="28">
+                Laravel VueJS ToDo
             </a>
             <div class="navbar-item is-hidden-desktop">
                 <p class="control">
